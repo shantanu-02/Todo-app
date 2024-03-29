@@ -7,7 +7,7 @@ import {
 import {  FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
 
 const TodoItem = ({ todo, index }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Initializing useDispatch hook to dispatch actions
 
   return (
     <li className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 py-2 gap-4">
@@ -22,14 +22,14 @@ const TodoItem = ({ todo, index }) => {
       <div className='space-x-3 ml-8'>
         <button
           className="mr-2 text-sm bg-red-500 text-white sm:px-2 px-1 py-1 rounded"
-          onClick={() => dispatch(removeTodo(index))}
+          onClick={() => dispatch(removeTodo(index))} // Dispatching removeTodo action on click
         >
           <FaTrash />
         </button>
         {!todo.completed && (
           <button
             className="text-sm bg-green-500 text-white sm:px-2 px-1 py-1 rounded"
-            onClick={() => dispatch(markCompleted(index))}
+            onClick={() => dispatch(markCompleted(index))} // Dispatching markCompleted action on click
           >
             <FaCheck />
           </button>
@@ -37,7 +37,7 @@ const TodoItem = ({ todo, index }) => {
         {todo.completed && (
           <button
             className="text-sm bg-yellow-500 text-white sm:px-2 px-1 py-1 rounded"
-            onClick={() => dispatch(markIncomplete(index))}
+            onClick={() => dispatch(markIncomplete(index))} // Dispatching markIncomplete action on click
           >
             <FaTimes />
           </button>

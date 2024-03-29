@@ -1,4 +1,3 @@
-// Todo.js
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TodoList from "./TodoList";
@@ -7,9 +6,12 @@ import { BsSearch } from "react-icons/bs";
 import { addTodo, updateSearchTerm, setTodos } from "../redux/actions";
 
 const Todo = () => {
+  // Redux state and dispatch
   const todos = useSelector((state) => state.todos);
   const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
+
+  // Local state for input values
   const [newTodoText, setNewTodoText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -24,10 +26,12 @@ const Todo = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  // Function to handle adding new todo
   const handleAddTodo = (text) => {
     dispatch(addTodo(text));
   };
 
+  // Handler for clicking add todo button
   const handleAddTodoClick = () => {
     if (newTodoText.trim() !== "") {
       handleAddTodo(newTodoText.trim());
@@ -35,6 +39,7 @@ const Todo = () => {
     }
   };
 
+  // Handler for search input change
   const handleSearchChange = (value) => {
     setSearchTerm(value);
     dispatch(updateSearchTerm(value));
@@ -42,9 +47,12 @@ const Todo = () => {
 
   return (
     <div className="max-w-4xl mx-auto sm:mt-8 p-4 bg-gray-100 rounded">
+      {/* Title */}
       <h2 className="mt-3 mb-6 text-2xl font-bold text-center uppercase">
         TODO APP
       </h2>
+
+      {/* Add Todo Input */}
       <div className="flex items-center mb-4">
         <input
           id="addTodoInput"
@@ -67,6 +75,7 @@ const Todo = () => {
         </button>
       </div>
 
+      {/* Filter and Search Input */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <FilterButtons />
         <div className="flex items-center mb-4">
@@ -83,9 +92,11 @@ const Todo = () => {
         </div>
       </div>
 
+      {/* Todo List */}
       <TodoList />
     </div>
   );
 };
 
 export default Todo;
+
