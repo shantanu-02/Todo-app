@@ -33,7 +33,7 @@
 
   You can mark tasks as a completed by using right button icon in front of the task.
 
-- #### Persistent storage: Saving tasks to lacal storage.
+- #### Persistent storage: Saving tasks to local storage.
 
   saving tasks to local storage so that tasks are not lost on page reload.
 
